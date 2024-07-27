@@ -13,12 +13,6 @@ public class WindowFront : MonoBehaviour
     [DllImport("user32.dll")]
     private static extern int SetWindowPos(IntPtr hWnd, int hWndInsertAfter, int x, int Y, int cx, int cy, uint uFlags);
 
-    [DllImport("user32.dll", SetLastError = true)]
-    private static extern int GetWindowLong(IntPtr hWnd, int nIndex);
-
-    [DllImport("user32.dll")]
-    private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
-
     private const uint SWP_NOMOVE = 0x0002;
     private const uint SWP_NOSIZE = 0x0001;
     private const uint SWP_NOZORDER = 0x0010;
@@ -27,9 +21,9 @@ public class WindowFront : MonoBehaviour
     private const int HWND_NOTOPMOST = -2;
 
     /// <summary>
-    /// ƒEƒBƒ“ƒhƒE‚ğÅ‘O–Ê‚É‚·‚é‚©Ø‚è‘Ö‚¦‚é
+    /// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’æœ€å‰é¢ã«ã™ã‚‹ã‹åˆ‡ã‚Šæ›¿ãˆã‚‹
     /// </summary>
-    /// <param name="isOnTop">Å‘O–Ê‚É‚·‚é‚©</param>
+    /// <param name="isOnTop">æœ€å‰é¢ã«ã™ã‚‹ã‹</param>
     public void SetWindowOnTop(bool isOnTop)
     {
         IntPtr hWnd = GetActiveWindow();
@@ -42,7 +36,7 @@ public class WindowFront : MonoBehaviour
             SetWindowPos(hWnd, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_SHOWWINDOW);
         }
 
-        //ƒAƒNƒeƒBƒuƒEƒBƒ“ƒhƒE‚É–ß‚·
+        //ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«æˆ»ã™
         SetForegroundWindow(hWnd);
     }
 }
